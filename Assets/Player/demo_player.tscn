@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmh1nx58cj2r6"]
+
+[ext_resource type="Script" path="res://Assets/Player/demo_player.gd" id="1_e1ktb"]
+[ext_resource type="Texture2D" uid="uid://cdcjf008vq3n8" path="res://Assets/Player/alienGreen_stand.png" id="1_kjxb7"]
+[ext_resource type="Texture2D" uid="uid://1q3fbrvsifp" path="res://Assets/Player/alienGreen_jump.png" id="2_vdsop"]
+[ext_resource type="Texture2D" uid="uid://m11r7x3gc0rd" path="res://Assets/Player/alienGreen_walk1.png" id="3_ng6hw"]
+[ext_resource type="Texture2D" uid="uid://dmkivudjj8i7u" path="res://Assets/Player/alienGreen_walk2.png" id="4_7fupn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vooh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kjxb7")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_vdsop")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ng6hw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7fupn")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xtlnj"]
+radius = 48.0
+height = 176.0
+
+[node name="DemoPlayer" type="CharacterBody2D"]
+script = ExtResource("1_e1ktb")
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1vooh")
+animation = &"jump"
+
+[node name="ColShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xtlnj")
