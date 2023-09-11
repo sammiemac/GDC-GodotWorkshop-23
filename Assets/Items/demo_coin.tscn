@@ -1,0 +1,105 @@
+[gd_scene load_steps=10 format=3 uid="uid://bwahaquhkaroq"]
+
+[ext_resource type="Script" path="res://demo_coin.gd" id="1_kg0xi"]
+[ext_resource type="Texture2D" uid="uid://dxrj652op1w55" path="res://Assets/Items/coin_1.png" id="2_o2jxt"]
+[ext_resource type="Texture2D" uid="uid://bf5xf1mmsftji" path="res://Assets/Items/coin_2.png" id="3_xq3xc"]
+[ext_resource type="Texture2D" uid="uid://s5y6yqnx073" path="res://Assets/Items/coin_3.png" id="4_nwqgk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glkbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o2jxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xq3xc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nwqgk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mxxom"]
+radius = 40.0
+
+[sub_resource type="Animation" id="Animation_1kvy6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nu47p"]
+resource_name = "collect"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqhtt"]
+_data = {
+"RESET": SubResource("Animation_1kvy6"),
+"collect": SubResource("Animation_nu47p")
+}
+
+[node name="DemoCoin" type="Area2D"]
+script = ExtResource("1_kg0xi")
+metadata/_edit_group_ = true
+
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_glkbv")
+animation = &"idle"
+
+[node name="ColShape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mxxom")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bqhtt")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimPlayer" to="." method="_on_anim_player_animation_finished"]

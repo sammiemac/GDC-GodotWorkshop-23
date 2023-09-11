@@ -1,143 +1,227 @@
-[gd_scene load_steps=25 format=3 uid="uid://fn40ln3v2hqa"]
+[gd_scene load_steps=12 format=3 uid="uid://fn40ln3v2hqa"]
 
+[ext_resource type="Script" path="res://Levels/hud.gd" id="1_v1b3r"]
 [ext_resource type="PackedScene" uid="uid://cmh1nx58cj2r6" path="res://Assets/Player/demo_player.tscn" id="1_wlw7u"]
-[ext_resource type="Texture2D" uid="uid://b2bvgl18chlae" path="res://Assets/Tiles/grassMid.png" id="2_k3vao"]
-[ext_resource type="Texture2D" uid="uid://44rqdanjd0td" path="res://Assets/Tiles/grass.png" id="3_n0qs6"]
-[ext_resource type="Texture2D" uid="uid://b20irkglt74at" path="res://Assets/Tiles/grassCenter.png" id="4_wvt2x"]
-[ext_resource type="Texture2D" uid="uid://dacfc337xrh6k" path="res://Assets/Tiles/grassCenter_round.png" id="5_pcp25"]
-[ext_resource type="Texture2D" uid="uid://c0b3nlx46fkxq" path="res://Assets/Tiles/grassHalf.png" id="6_kdl6c"]
-[ext_resource type="Texture2D" uid="uid://caqp3vdfaiu5v" path="res://Assets/Tiles/grassHalf_left.png" id="7_d36vk"]
-[ext_resource type="Texture2D" uid="uid://d4mwraagujyi5" path="res://Assets/Tiles/grassHalf_mid.png" id="8_b8wkf"]
-[ext_resource type="Texture2D" uid="uid://c2isahq1ll7l8" path="res://Assets/Tiles/grassHalf_right.png" id="9_gph37"]
-[ext_resource type="Texture2D" uid="uid://chafwfqks34qj" path="res://Assets/Tiles/grassLeft.png" id="10_06ahg"]
-[ext_resource type="Texture2D" uid="uid://c33dk0nk808am" path="res://Assets/Tiles/grassRight.png" id="11_mnujn"]
+[ext_resource type="Texture2D" uid="uid://dxrj652op1w55" path="res://Assets/Items/coin_1.png" id="2_y3xo3"]
+[ext_resource type="PackedScene" uid="uid://bwahaquhkaroq" path="res://Assets/Items/demo_coin.tscn" id="4_omudl"]
+[ext_resource type="TileSet" uid="uid://boc50hqqsnr5q" path="res://Levels/grass_tiles.tres" id="6_kl0hj"]
 [ext_resource type="Texture2D" uid="uid://b7cdhxlns1v22" path="res://Assets/Background/blue_grass.png" id="12_6j45s"]
 [ext_resource type="PackedScene" uid="uid://bwaoqkcrjjphw" path="res://Assets/Enemies/demo_enemy.tscn" id="13_xk6t3"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ai5ge"]
-texture = ExtResource("3_n0qs6")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+[sub_resource type="LabelSettings" id="LabelSettings_aixse"]
+font_size = 40
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0ios5"]
-texture = ExtResource("4_wvt2x")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+[sub_resource type="LabelSettings" id="LabelSettings_7w7or"]
+font_size = 120
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52uif"]
-texture = ExtResource("5_pcp25")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+[sub_resource type="LabelSettings" id="LabelSettings_ojw47"]
+font_size = 40
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qfbty"]
-texture = ExtResource("6_kdl6c")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9, -64, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6k7o"]
-texture = ExtResource("7_d36vk")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9, -64, 8)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gn5wi"]
-texture = ExtResource("8_b8wkf")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 8, -64, 9)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4pwpv"]
-texture = ExtResource("9_gph37")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9, -64, 9)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6ykt"]
-texture = ExtResource("10_06ahg")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c5j54"]
-texture = ExtResource("2_k3vao")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_damlc"]
-texture = ExtResource("11_mnujn")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-
-[sub_resource type="TileSet" id="TileSet_bkr40"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 5
-sources/10 = SubResource("TileSetAtlasSource_ai5ge")
-sources/11 = SubResource("TileSetAtlasSource_0ios5")
-sources/12 = SubResource("TileSetAtlasSource_52uif")
-sources/13 = SubResource("TileSetAtlasSource_qfbty")
-sources/14 = SubResource("TileSetAtlasSource_s6k7o")
-sources/15 = SubResource("TileSetAtlasSource_gn5wi")
-sources/16 = SubResource("TileSetAtlasSource_4pwpv")
-sources/17 = SubResource("TileSetAtlasSource_d6ykt")
-sources/18 = SubResource("TileSetAtlasSource_c5j54")
-sources/19 = SubResource("TileSetAtlasSource_damlc")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aye17"]
+size = Vector2(768, 192)
 
 [node name="DemoLevel" type="Node2D"]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("1_v1b3r")
+
+[node name="CoinUI" type="Node2D" parent="HUD"]
+
+[node name="Panel" type="Panel" parent="HUD/CoinUI"]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 200.0
+offset_bottom = 104.0
+
+[node name="TextureRect" type="TextureRect" parent="HUD/CoinUI"]
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 104.0
+offset_bottom = 96.0
+texture = ExtResource("2_y3xo3")
+expand_mode = 1
+
+[node name="CoinCount" type="Label" parent="HUD/CoinUI"]
+offset_left = 104.0
+offset_top = 32.0
+offset_right = 184.0
+offset_bottom = 96.0
+text = "##"
+label_settings = SubResource("LabelSettings_aixse")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverUI" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="Panel" type="Panel" parent="HUD/GameOverUI"]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="GameOverText" type="Label" parent="HUD/GameOverUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -84.0
+offset_right = 590.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Uh Oh! Game Over..."
+label_settings = SubResource("LabelSettings_7w7or")
+
+[node name="TryAgain" type="Button" parent="HUD/GameOverUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -276.0
+offset_right = 128.0
+offset_bottom = -204.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TryAgainText" type="Label" parent="HUD/GameOverUI/Panel/TryAgain"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try again?"
+label_settings = SubResource("LabelSettings_ojw47")
+
+[node name="CompleteUI" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="Panel" type="Panel" parent="HUD/CompleteUI"]
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="CompleteText" type="Label" parent="HUD/CompleteUI/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -590.0
+offset_top = -168.0
+offset_right = 590.0
+offset_bottom = 168.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Great Job!
+Level Complete!"
+label_settings = SubResource("LabelSettings_7w7or")
+horizontal_alignment = 1
+
+[node name="TryAgain" type="Button" parent="HUD/CompleteUI/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -208.0
+offset_right = 128.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TryAgainText" type="Label" parent="HUD/CompleteUI/Panel/TryAgain"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Try again?"
+label_settings = SubResource("LabelSettings_ojw47")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 follow_viewport_enabled = true
 
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground"]
+offset_left = -128.0
+offset_top = -680.0
+offset_right = 3200.0
+offset_bottom = 640.0
+color = Color(0.815686, 0.956863, 0.968627, 1)
+
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.25, 0.25)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_top = -128.0
-offset_right = 2272.0
-offset_bottom = 896.0
+offset_left = -120.0
+offset_top = -144.0
+offset_right = 3208.0
+offset_bottom = 880.0
 texture = ExtResource("12_6j45s")
 stretch_mode = 1
 
-[node name="DemoPlayer" parent="." instance=ExtResource("1_wlw7u")]
+[node name="DemoPlayer" parent="." groups=["Player"] instance=ExtResource("1_wlw7u")]
 position = Vector2(272, 456)
 
 [node name="Camera2D" type="Camera2D" parent="DemoPlayer"]
 limit_left = 0
-limit_top = 0
+limit_top = -128
+limit_right = 3072
 limit_bottom = 720
 
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("4_omudl")]
+position = Vector2(840, 552)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("4_omudl")]
+position = Vector2(840, 160)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("4_omudl")]
+position = Vector2(1536, 312)
+
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_bkr40")
+tile_set = ExtResource("6_kl0hj")
 cell_quadrant_size = 128
 format = 2
-layer_0/tile_data = PackedInt32Array(327680, 18, 0, 327681, 18, 0, 327682, 18, 0, 327683, 18, 0, 327684, 18, 0, 327685, 18, 0, 327686, 18, 0, 327687, 18, 0, 327688, 18, 0, 327689, 18, 0, 327690, 18, 0, 327691, 18, 0, 327692, 18, 0, 327693, 18, 0, 327694, 18, 0, 327695, 18, 0, 327696, 18, 0, 327697, 18, 0, 327698, 18, 0)
+layer_0/tile_data = PackedInt32Array(327680, 18, 0, 327681, 18, 0, 327682, 18, 0, 327683, 18, 0, 327684, 18, 0, 327685, 18, 0, 327686, 18, 0, 327687, 18, 0, 327688, 18, 0, 327695, 18, 0, 327696, 18, 0, 327697, 18, 0, 327698, 18, 0, 131078, 15, 0, 131077, 14, 0, 131079, 16, 0, 196620, 16, 0, 196619, 14, 0, 131088, 14, 0, 131089, 15, 0, 131090, 16, 0, 327689, 19, 0, 327694, 17, 0, 327699, 18, 0, 327700, 18, 0, 327701, 18, 0, 327703, 18, 0, 327702, 18, 0, 327704, 11, 0, 262168, 11, 0, 196632, 11, 0, 131096, 11, 0, 65560, 11, 0, 24, 11, 0, 393215, 11, 0, 327679, 11, 0, 262143, 11, 0, 196607, 11, 0, 131071, 11, 0, 65535, 11, 0)
+metadata/_edit_lock_ = true
 
 [node name="DemoEnemy" parent="." instance=ExtResource("13_xk6t3")]
-position = Vector2(1152, 832)
+position = Vector2(1152, 576)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="FallZone" type="Area2D" parent="."]
+position = Vector2(1536, 776)
+
+[node name="FallCol" type="CollisionShape2D" parent="FallZone"]
+position = Vector2(0, 88)
+shape = SubResource("RectangleShape2D_aye17")
+
+[connection signal="pressed" from="HUD/GameOverUI/Panel/TryAgain" to="HUD" method="_on_try_again_pressed"]
+[connection signal="pressed" from="HUD/CompleteUI/Panel/TryAgain" to="HUD" method="_on_try_again_pressed"]
+[connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin2" to="HUD" method="_on_coin_collected"]
+[connection signal="coin_collected" from="Coins/Coin3" to="HUD" method="_on_coin_collected"]
+[connection signal="body_entered" from="FallZone" to="HUD" method="_on_fall_zone_body_entered"]
