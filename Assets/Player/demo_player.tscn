@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmh1nx58cj2r6"]
+[gd_scene load_steps=11 format=3 uid="uid://cmh1nx58cj2r6"]
 
 [ext_resource type="Script" path="res://Assets/Player/demo_player.gd" id="1_e1ktb"]
 [ext_resource type="Texture2D" uid="uid://cdcjf008vq3n8" path="res://Assets/Player/alienGreen_stand.png" id="1_kjxb7"]
@@ -40,6 +40,42 @@ animations = [{
 radius = 48.0
 height = 176.0
 
+[sub_resource type="Animation" id="Animation_n71si"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_buxtw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nwbkx"]
+_data = {
+"RESET": SubResource("Animation_buxtw"),
+"die": SubResource("Animation_n71si")
+}
+
 [node name="DemoPlayer" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 15
 script = ExtResource("1_e1ktb")
@@ -50,3 +86,10 @@ animation = &"jump"
 
 [node name="ColShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_xtlnj")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nwbkx")
+}
+
+[connection signal="animation_finished" from="AnimPlayer" to="." method="_on_anim_player_animation_finished"]

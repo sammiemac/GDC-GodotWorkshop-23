@@ -9,9 +9,12 @@ signal enemy_hit(body: Node2D)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	if direction:
+	if direction > 0:
 		$AnimSprite.flip_h = true
-		$FloorChecker.position.x = $ColShape.shape.get_size().x * direction
+	elif direction < 0:
+		$AnimSprite.flip_h = false
+	
+	$FloorChecker.position.x = $ColShape.shape.get_size().x * direction
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
