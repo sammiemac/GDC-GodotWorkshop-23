@@ -40,7 +40,7 @@ animations = [{
 radius = 48.0
 height = 176.0
 
-[node name="DemoPlayer" type="CharacterBody2D" groups=["player"]]
+[node name="DemoPlayer" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 15
 script = ExtResource("1_e1ktb")
 

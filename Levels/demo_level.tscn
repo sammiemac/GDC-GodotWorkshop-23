@@ -182,8 +182,8 @@ offset_bottom = 880.0
 texture = ExtResource("12_6j45s")
 stretch_mode = 1
 
-[node name="DemoPlayer" parent="." groups=["Player"] instance=ExtResource("1_wlw7u")]
-position = Vector2(272, 456)
+[node name="DemoPlayer" parent="." instance=ExtResource("1_wlw7u")]
+position = Vector2(2128, 520)
 
 [node name="Camera2D" type="Camera2D" parent="DemoPlayer"]
 limit_left = 0
@@ -210,7 +210,7 @@ layer_0/tile_data = PackedInt32Array(327680, 18, 0, 327681, 18, 0, 327682, 18, 0
 metadata/_edit_lock_ = true
 
 [node name="DemoEnemy" parent="." instance=ExtResource("13_xk6t3")]
-position = Vector2(1152, 576)
+position = Vector2(1920, 577)
 
 [node name="FallZone" type="Area2D" parent="."]
 position = Vector2(1536, 776)
@@ -224,4 +224,6 @@ shape = SubResource("RectangleShape2D_aye17")
 [connection signal="coin_collected" from="Coins/Coin1" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin2" to="HUD" method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coins/Coin3" to="HUD" method="_on_coin_collected"]
+[connection signal="enemy_hit" from="DemoEnemy" to="HUD" method="_on_game_over"]
 [connection signal="body_entered" from="FallZone" to="HUD" method="_on_fall_zone_body_entered"]
+[connection signal="body_entered" from="FallZone" to="HUD" method="_on_game_over"]

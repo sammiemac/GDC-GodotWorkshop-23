@@ -19,10 +19,10 @@ func _on_coin_collected():
 	_ready()
 
 
-func _on_fall_zone_body_entered(body):
-	if body.is_in_group("Player"):
-		$CoinUI.visible = false
-		$GameOverUI.visible = true
+func _on_game_over(body):
+	$CoinUI.visible = false
+	$GameOverUI.visible = true
+	body.velocity.x = 0
 
 
 func _on_try_again_pressed():

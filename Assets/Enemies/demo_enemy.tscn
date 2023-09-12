@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwaoqkcrjjphw"]
+[gd_scene load_steps=13 format=3 uid="uid://bwaoqkcrjjphw"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/demo_enemy.gd" id="1_mpi5m"]
 [ext_resource type="Texture2D" uid="uid://bjye6ll71afy5" path="res://Assets/Enemies/slimeBlue_hit.png" id="1_yoa74"]
 [ext_resource type="Texture2D" uid="uid://d274u4ie6cw54" path="res://Assets/Enemies/slimeBlue.png" id="2_aq7fv"]
 [ext_resource type="Texture2D" uid="uid://b65er4seqhtd3" path="res://Assets/Enemies/slimeBlue_move.png" id="3_5w5pw"]
+[ext_resource type="Texture2D" uid="uid://ca55vbpk64gsj" path="res://icon.svg" id="5_agrb3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_p6ixm"]
 animations = [{
@@ -27,12 +28,51 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8k3c5"]
-radius = 24.0
-height = 80.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvyxi"]
+size = Vector2(40, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_foaj0"]
+size = Vector2(40, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0p32q"]
 size = Vector2(64, 8)
+
+[sub_resource type="Animation" id="Animation_omehl"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_agmyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f48qq"]
+_data = {
+"RESET": SubResource("Animation_agmyt"),
+"hit": SubResource("Animation_omehl")
+}
 
 [node name="DemoEnemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -44,18 +84,46 @@ sprite_frames = SubResource("SpriteFrames_p6ixm")
 animation = &"move"
 
 [node name="ColShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, 40)
+position = Vector2(1.56284e-05, 44)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_8k3c5")
+shape = SubResource("RectangleShape2D_uvyxi")
+
+[node name="DamageBox" type="Area2D" parent="."]
+position = Vector2(0, 8)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
+position = Vector2(-40, 36)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_foaj0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DamageBox"]
+position = Vector2(40, 36)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_foaj0")
 
 [node name="HitBox" type="Area2D" parent="."]
 position = Vector2(0, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_0p32q")
 
 [node name="FloorChecker" type="RayCast2D" parent="."]
-position = Vector2(0, 48)
-target_position = Vector2(0, 16)
+position = Vector2(-40, 48)
+target_position = Vector2(0, 24)
+collision_mask = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="FloorChecker"]
+position = Vector2(0, 24)
+scale = Vector2(0.1875, 0.125)
+texture = ExtResource("5_agrb3")
+
+[node name="AnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f48qq")
+}
+
+[connection signal="body_entered" from="DamageBox" to="." method="_on_damage_box_body_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="animation_finished" from="AnimPlayer" to="." method="_on_anim_player_animation_finished"]
