@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bwaoqkcrjjphw"]
+[gd_scene load_steps=8 format=3 uid="uid://bwaoqkcrjjphw"]
 
 [ext_resource type="Script" path="res://Assets/Enemies/demo_enemy.gd" id="1_mpi5m"]
 [ext_resource type="Texture2D" uid="uid://bjye6ll71afy5" path="res://Assets/Enemies/slimeBlue_hit.png" id="1_yoa74"]
@@ -31,18 +31,31 @@ animations = [{
 radius = 24.0
 height = 80.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p32q"]
+size = Vector2(64, 8)
+
 [node name="DemoEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_mpi5m")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_p6ixm")
-animation = &"hit"
+animation = &"move"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="ColShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, 40)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8k3c5")
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_0p32q")
+
+[node name="FloorChecker" type="RayCast2D" parent="."]
 position = Vector2(0, 48)
 target_position = Vector2(0, 16)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
