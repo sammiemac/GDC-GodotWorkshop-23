@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=3 uid="uid://co602vcoqnr04"]
+
+[ext_resource type="FontFile" uid="uid://cr0b37ltp5huw" path="res://Assets/Fonts/font_title.ttf" id="1_3wja8"]
+[ext_resource type="Texture2D" uid="uid://bfataokjm1khw" path="res://godot dab.png" id="2_q0d0u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jtapq"]
+font = ExtResource("1_3wja8")
+font_size = 40
+font_color = Color(0.278431, 0.54902, 0.752941, 1)
+
+[node name="Welcome" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278431, 0.54902, 0.752941, 1)
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -608.0
+offset_top = -328.0
+offset_right = 608.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -435.5
+offset_top = 64.0
+offset_right = 435.5
+offset_bottom = 170.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Welcome to the
+Intro to Godot Workshop"
+label_settings = SubResource("LabelSettings_jtapq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GodotDab" type="Sprite2D" parent="."]
+position = Vector2(320, 456)
+scale = Vector2(4.87333, 4.87333)
+texture = ExtResource("2_q0d0u")

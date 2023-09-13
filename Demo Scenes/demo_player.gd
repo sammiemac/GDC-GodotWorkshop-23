@@ -44,7 +44,6 @@ func bounce():
 
 
 func death_anim():
-	$ColShape.disabled = true
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(2, false)
 	set_collision_mask_value(3, false)

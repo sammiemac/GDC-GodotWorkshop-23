@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://fn40ln3v2hqa"]
+[gd_scene load_steps=14 format=3 uid="uid://cmvn2ddgocgqr"]
 
-[ext_resource type="Script" path="res://Levels/hud.gd" id="1_v1b3r"]
-[ext_resource type="PackedScene" uid="uid://cmh1nx58cj2r6" path="res://Assets/Player/demo_player.tscn" id="1_wlw7u"]
-[ext_resource type="Texture2D" uid="uid://dxrj652op1w55" path="res://Assets/Items/coin_1.png" id="2_y3xo3"]
-[ext_resource type="PackedScene" uid="uid://bwq8vsuadou8" path="res://Assets/Items/demo_coin.tscn" id="4_omudl"]
-[ext_resource type="TileSet" uid="uid://boc50hqqsnr5q" path="res://Levels/grass_tiles.tres" id="6_kl0hj"]
-[ext_resource type="AudioStream" uid="uid://dkbntod711w5o" path="res://Assets/Audio/bgm_Alpha_Dance.ogg" id="8_a3uu1"]
-[ext_resource type="Texture2D" uid="uid://b7cdhxlns1v22" path="res://Assets/Background/blue_grass.png" id="12_6j45s"]
-[ext_resource type="PackedScene" uid="uid://bwaoqkcrjjphw" path="res://Assets/Enemies/demo_enemy.tscn" id="13_xk6t3"]
+[ext_resource type="Script" path="res://Demo Scenes/hud.gd" id="1_ok176"]
+[ext_resource type="Texture2D" uid="uid://dxrj652op1w55" path="res://Assets/Items/coin_1.png" id="2_ot836"]
+[ext_resource type="Texture2D" uid="uid://b7cdhxlns1v22" path="res://Assets/Background/blue_grass.png" id="3_e1adr"]
+[ext_resource type="FontFile" uid="uid://ybwy76ov0580" path="res://Assets/Fonts/font_default.ttf" id="3_i1cj0"]
+[ext_resource type="PackedScene" path="res://Demo Scenes/demo_player.tscn" id="4_gvo2c"]
+[ext_resource type="PackedScene" uid="uid://dpue732iu7jd7" path="res://Demo Scenes/demo_coin.tscn" id="5_i3o0q"]
+[ext_resource type="PackedScene" uid="uid://copc2an7m7v1x" path="res://Demo Scenes/demo_enemy.tscn" id="6_sh5v0"]
+[ext_resource type="TileSet" uid="uid://boc50hqqsnr5q" path="res://Demo Scenes/grass_tiles.tres" id="7_twyra"]
+[ext_resource type="AudioStream" uid="uid://dkbntod711w5o" path="res://Assets/Audio/bgm_Alpha_Dance.ogg" id="17_djalf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_aixse"]
+font = ExtResource("3_i1cj0")
 font_size = 40
 
 [sub_resource type="LabelSettings" id="LabelSettings_7w7or"]
@@ -22,7 +24,7 @@ font_size = 40
 size = Vector2(768, 192)
 
 [node name="DemoLevel" type="Node2D"]
-script = ExtResource("1_v1b3r")
+script = ExtResource("1_ok176")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -39,7 +41,7 @@ offset_left = 40.0
 offset_top = 32.0
 offset_right = 104.0
 offset_bottom = 96.0
-texture = ExtResource("2_y3xo3")
+texture = ExtResource("2_ot836")
 expand_mode = 1
 
 [node name="CoinCount" type="Label" parent="HUD/CoinUI"]
@@ -180,10 +182,10 @@ offset_left = -120.0
 offset_top = -144.0
 offset_right = 3208.0
 offset_bottom = 880.0
-texture = ExtResource("12_6j45s")
+texture = ExtResource("3_e1adr")
 stretch_mode = 1
 
-[node name="DemoPlayer" parent="." instance=ExtResource("1_wlw7u")]
+[node name="DemoPlayer" parent="." instance=ExtResource("4_gvo2c")]
 position = Vector2(112, 536)
 
 [node name="Camera2D" type="Camera2D" parent="DemoPlayer"]
@@ -194,30 +196,30 @@ limit_bottom = 720
 
 [node name="Coins" type="Node2D" parent="."]
 
-[node name="Coin1" parent="Coins" instance=ExtResource("4_omudl")]
+[node name="Coin1" parent="Coins" instance=ExtResource("5_i3o0q")]
 position = Vector2(2240, 160)
 
-[node name="Coin2" parent="Coins" instance=ExtResource("4_omudl")]
+[node name="Coin2" parent="Coins" instance=ExtResource("5_i3o0q")]
 position = Vector2(840, 160)
 
-[node name="Coin3" parent="Coins" instance=ExtResource("4_omudl")]
+[node name="Coin3" parent="Coins" instance=ExtResource("5_i3o0q")]
 position = Vector2(1536, 312)
 
 [node name="Enemies" type="Node2D" parent="."]
 position = Vector2(1920, 577)
 
-[node name="Enemy1" parent="Enemies" instance=ExtResource("13_xk6t3")]
+[node name="Enemy1" parent="Enemies" instance=ExtResource("6_sh5v0")]
 position = Vector2(464, -385)
 speed = 200.0
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("13_xk6t3")]
+[node name="Enemy2" parent="Enemies" instance=ExtResource("6_sh5v0")]
 position = Vector2(-1080, -1)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("13_xk6t3")]
+[node name="Enemy3" parent="Enemies" instance=ExtResource("6_sh5v0")]
 position = Vector2(-384, -257)
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource("6_kl0hj")
+tile_set = ExtResource("7_twyra")
 cell_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(327680, 18, 0, 327681, 18, 0, 327682, 18, 0, 327683, 18, 0, 327684, 18, 0, 327685, 18, 0, 327686, 18, 0, 327687, 18, 0, 327688, 18, 0, 327695, 18, 0, 327696, 18, 0, 327697, 18, 0, 327698, 18, 0, 131078, 15, 0, 131077, 14, 0, 131079, 16, 0, 196620, 16, 0, 196619, 14, 0, 131088, 14, 0, 131089, 15, 0, 131090, 16, 0, 327689, 19, 0, 327694, 17, 0, 327699, 18, 0, 327700, 18, 0, 327701, 18, 0, 327703, 18, 0, 327702, 18, 0, 327704, 11, 0, 262168, 11, 0, 196632, 11, 0, 131096, 11, 0, 65560, 11, 0, 24, 11, 0, 393215, 11, 0, 327679, 11, 0, 262143, 11, 0, 196607, 11, 0, 131071, 11, 0, 65535, 11, 0)
@@ -231,7 +233,7 @@ position = Vector2(0, 88)
 shape = SubResource("RectangleShape2D_aye17")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_a3uu1")
+stream = ExtResource("17_djalf")
 volume_db = -10.0
 autoplay = true
 

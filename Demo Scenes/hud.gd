@@ -33,4 +33,4 @@ func _on_game_over(body):
 
 
 func _on_try_again_pressed():
-	get_tree().change_scene_to_file("res://Levels/demo_level.tscn")
+	get_tree().change_scene_to_file("res://Demo Scenes/demo_level.tscn")

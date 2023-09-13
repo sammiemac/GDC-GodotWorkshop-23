@@ -47,6 +47,7 @@ func _on_hit_box_body_entered(body):
 
 func _on_damage_box_body_entered(body):
 	if body.is_in_group("Player"):
+		$AudioPlayer.play()
 		emit_signal("enemy_hit", body)
 
 

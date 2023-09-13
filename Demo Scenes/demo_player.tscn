@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cmh1nx58cj2r6"]
+[gd_scene load_steps=12 format=3]
 
-[ext_resource type="Script" path="res://Assets/Player/demo_player.gd" id="1_e1ktb"]
+[ext_resource type="Script" path="res://Demo Scenes/demo_player.gd" id="1_e1ktb"]
 [ext_resource type="Texture2D" uid="uid://cdcjf008vq3n8" path="res://Assets/Player/alienGreen_stand.png" id="1_kjxb7"]
 [ext_resource type="Texture2D" uid="uid://1q3fbrvsifp" path="res://Assets/Player/alienGreen_jump.png" id="2_vdsop"]
 [ext_resource type="Texture2D" uid="uid://m11r7x3gc0rd" path="res://Assets/Player/alienGreen_walk1.png" id="3_ng6hw"]
