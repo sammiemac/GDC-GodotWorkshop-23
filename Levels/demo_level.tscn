@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://fn40ln3v2hqa"]
+[gd_scene load_steps=13 format=3 uid="uid://fn40ln3v2hqa"]
 
 [ext_resource type="Script" path="res://Levels/hud.gd" id="1_v1b3r"]
 [ext_resource type="PackedScene" uid="uid://cmh1nx58cj2r6" path="res://Assets/Player/demo_player.tscn" id="1_wlw7u"]
 [ext_resource type="Texture2D" uid="uid://dxrj652op1w55" path="res://Assets/Items/coin_1.png" id="2_y3xo3"]
-[ext_resource type="PackedScene" uid="uid://bwahaquhkaroq" path="res://Assets/Items/demo_coin.tscn" id="4_omudl"]
+[ext_resource type="PackedScene" uid="uid://bwq8vsuadou8" path="res://Assets/Items/demo_coin.tscn" id="4_omudl"]
 [ext_resource type="TileSet" uid="uid://boc50hqqsnr5q" path="res://Levels/grass_tiles.tres" id="6_kl0hj"]
+[ext_resource type="AudioStream" uid="uid://dkbntod711w5o" path="res://Assets/Audio/bgm_Alpha_Dance.ogg" id="8_a3uu1"]
 [ext_resource type="Texture2D" uid="uid://b7cdhxlns1v22" path="res://Assets/Background/blue_grass.png" id="12_6j45s"]
 [ext_resource type="PackedScene" uid="uid://bwaoqkcrjjphw" path="res://Assets/Enemies/demo_enemy.tscn" id="13_xk6t3"]
 
@@ -228,6 +229,11 @@ position = Vector2(1536, 776)
 [node name="FallCol" type="CollisionShape2D" parent="FallZone"]
 position = Vector2(0, 88)
 shape = SubResource("RectangleShape2D_aye17")
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_a3uu1")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="HUD/GameOverUI/Panel/TryAgain" to="." method="_on_try_again_pressed"]
 [connection signal="pressed" from="HUD/CompleteUI/Panel/TryAgain" to="." method="_on_try_again_pressed"]

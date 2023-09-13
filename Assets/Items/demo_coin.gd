@@ -8,8 +8,10 @@ func _ready():
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		$ColShape.disabled = true
-		coin_collected.emit()
 		$AnimPlayer.play("collect")
+		$AudioPlayer.play()
+		coin_collected.emit()
+
 
 func _on_anim_player_animation_finished(anim_name):
 	queue_free()

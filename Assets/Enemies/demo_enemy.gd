@@ -36,13 +36,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _on_hit_box_body_entered(body):
-	if body.is_in_group("Player"):
-		$AnimSprite.play("hit")
-		$AnimPlayer.play("hit")
-		speed = 0
-		set_collision_layer_value(3, false)
-		set_collision_mask_value(1, false)
-		body.bounce()
+	$AnimSprite.play("hit")
+	$AnimPlayer.play("hit")
+	$AudioPlayer.play()
+	speed = 0
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(1, false)
+	body.bounce()
 
 
 func _on_damage_box_body_entered(body):

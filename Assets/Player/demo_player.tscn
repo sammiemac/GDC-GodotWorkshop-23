@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmh1nx58cj2r6"]
+[gd_scene load_steps=12 format=3 uid="uid://cmh1nx58cj2r6"]
 
 [ext_resource type="Script" path="res://Assets/Player/demo_player.gd" id="1_e1ktb"]
 [ext_resource type="Texture2D" uid="uid://cdcjf008vq3n8" path="res://Assets/Player/alienGreen_stand.png" id="1_kjxb7"]
 [ext_resource type="Texture2D" uid="uid://1q3fbrvsifp" path="res://Assets/Player/alienGreen_jump.png" id="2_vdsop"]
 [ext_resource type="Texture2D" uid="uid://m11r7x3gc0rd" path="res://Assets/Player/alienGreen_walk1.png" id="3_ng6hw"]
 [ext_resource type="Texture2D" uid="uid://dmkivudjj8i7u" path="res://Assets/Player/alienGreen_walk2.png" id="4_7fupn"]
+[ext_resource type="AudioStream" uid="uid://h8nh30xwhakx" path="res://Assets/Audio/sfx_jump.ogg" id="6_tmtyv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1vooh"]
 animations = [{
@@ -40,21 +41,6 @@ animations = [{
 radius = 48.0
 height = 176.0
 
-[sub_resource type="Animation" id="Animation_n71si"]
-resource_name = "die"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_buxtw"]
 length = 0.001
 tracks/0/type = "value"
@@ -68,6 +54,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n71si"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwbkx"]
@@ -91,5 +92,9 @@ shape = SubResource("CapsuleShape2D_xtlnj")
 libraries = {
 "": SubResource("AnimationLibrary_nwbkx")
 }
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tmtyv")
+volume_db = -10.0
 
 [connection signal="animation_finished" from="AnimPlayer" to="." method="_on_anim_player_animation_finished"]
